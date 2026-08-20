@@ -1,0 +1,76 @@
+#-------------------------------------------------------------------------------
+# Large data files distributed via Zenodo, not git
+#-------------------------------------------------------------------------------
+
+# H-matrix stress-interaction kernels: 4 files of ~229 MB each (~1 GB total).
+# GitHub rejects regular git objects larger than 100 MB, so these are archived
+# in the associated Zenodo record instead. Download and unpack hmat/ at the
+# repository root before reproducing any model run, or set compute_hmat = true
+# in setup_elastic.m / setup_visco.m to regenerate them (much slower).
+#
+# Ignore the hmat directory itself and every file and subdirectory inside it.
+hmat/
+hmat/**
+
+# Uncomment to also keep the VISCO3D Green's functions (~46 MB each, ~730 MB
+# total) and the viscoelastic meshes out of git, distributing them via Zenodo.
+# Green_function_visco/*.mat
+# visco_mesh/*.mat
+
+#-------------------------------------------------------------------------------
+# MATLAB
+#-------------------------------------------------------------------------------
+
+*.asv
+*.m~
+*.autosave
+slprj/
+sccprj/
+codegen/
+*.slxc
+*.mlappinstall
+*.mltbx
+octave-workspace
+
+# Compiled MEX binaries and object files from local builds.
+# hmmvp0.16/ is exempt from every rule above: the HMMVP distribution, including
+# its prebuilt macOS MEX binaries, is tracked exactly as shipped.
+*.o
+*.obj
+*.mexa64
+*.mexw32
+*.mexw64
+*.dSYM/
+!hmmvp0.16/**
+
+#-------------------------------------------------------------------------------
+# Scratch and editor files
+#-------------------------------------------------------------------------------
+
+%*
+*.bak
+*.tmp
+scratch/
+
+#-------------------------------------------------------------------------------
+# Python / notebooks
+#-------------------------------------------------------------------------------
+
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+#-------------------------------------------------------------------------------
+# OS clutter
+#-------------------------------------------------------------------------------
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
