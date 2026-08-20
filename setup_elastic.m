@@ -20,21 +20,26 @@ compute_disp = true;
 disp_filename = 'test_disp';
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add folder path for input data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+addpath tools
+addpath vel_field_lindsey/
+addpath hmat/
+addpath ne_10m_coastline/
+
 %name of file containing data
 %format of columns: lon, lat, Ve(mm/yr), Vn(mm/yr), Sige, Sign
-data_filename = 'observed_vel_subset.txt'; % loaded data from Lindsey et al., 2018
+
+data_filename = fullfile('vel_field_lindsey', 'observed_vel_subset.txt'); % Data from Lindsey et al. (2018)
 
 
 %path to build mesh script
 mesh_path = './build_mesh/make_mesh_elastic.m';
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-addpath tools
-addpath ne_10m_coastline/
-addpath hmat/
 
 
 %build mesh
