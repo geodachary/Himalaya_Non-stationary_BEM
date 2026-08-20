@@ -25,7 +25,6 @@ functions precomputed with VISCO3D) are included.
 - [Input data](#input-data)
 - [Results and output formats](#results-and-output-formats)
 - [Large data files (Zenodo)](#large-data-files-zenodo)
-- [Before you run: external dependency](#before-you-run-external-dependency)
 - [Third-party software and data](#third-party-software-and-data)
 - [Citation](#citation)
 - [License](#license)
@@ -38,14 +37,16 @@ functions precomputed with VISCO3D) are included.
 | Requirement | Notes |
 |---|---|
 | MATLAB R2020b or newer | Developed and tested on macOS |
-| Mapping Toolbox | `shaperead`, used by `tools/plot_coast_xy.m` for coastlines |
+| Mapping Toolbox | `shaperead`, used by `tools/plot_coast_xy.m` to draw coastlines |
 | Signal Processing Toolbox | `medfilt1`, used only for the slip-rate profile plots |
 | C++ compiler | Only if the bundled HMMVP MEX files must be rebuilt (see `hmmvp0.16/make.m`) |
-| Natural Earth coastline shapefile | See [Before you run](#before-you-run-external-dependency) |
 | Disk space | ~1.7 GB for the H-matrices and viscoelastic Green's functions |
 
 Prebuilt HMMVP MEX binaries for macOS (Intel `.mexmaci64` and Apple Silicon `.mexmaca64`)
 ship with the repository. On Linux or Windows, run `make.m` inside `hmmvp0.16/` first.
+
+The Natural Earth 1:10m coastline shapefile used by the plotting helpers is bundled in
+`ne_10m_coastline/`, so no external download is needed.
 
 ---
 
@@ -230,6 +231,7 @@ script, so the ring parameters never move.
 ├── Green_function_visco/  # VISCO3D interseismic velocity Green's functions
 ├── hmat/                  # H-matrix stress kernels (not in git — see Zenodo)
 ├── vel_field_lindsey/     # GPS velocities, baselines, long-term block velocities
+├── ne_10m_coastline/      # Natural Earth coastline shapefile, used by the plots
 ├── MCMC_results/          # posterior-mean results for the published runs
 │
 ├── tools/                 # geometry, Green's-function, solver, plotting, and
@@ -402,18 +404,6 @@ Zenodo as well rather than committing them.
 
 ---
 
-## Before you run: external dependency
-
-The plotting helper `tools/plot_coast_xy.m` calls
-`shaperead('ne_10m_coastline', ...)`, and the setup and mesh scripts `addpath` a directory
-named `ne_10m_coastline/`. **That shapefile is not bundled with this repository.** Download
-the Natural Earth 1:10m *Coastline* shapefile from
-<https://www.naturalearthdata.com/downloads/10m-physical-vectors/>, unpack it into
-`ne_10m_coastline/` at the repository root, and the coastline overlays will work. Without
-it, the model still runs but every plotting call that draws a coastline will error.
-
----
-
 ## Third-party software and data
 
 This repository bundles third-party components that are **not** covered by its own
@@ -421,15 +411,26 @@ license:
 
 - **HMMVP 0.16** by Andrew M. Bradley (`hmmvp0.16/`), distributed under the **Eclipse
   Public License 1.0**; see `hmmvp0.16/readme.txt`.
+- **Triangular dislocation elements** by Brendan Meade (`tools/CalcTriDisps.m`,
+  `tools/tridisloc3d.m`), Copyright © 2006 Brendan Meade, MIT license (notice in the file
+  headers) — Meade (2007), after Comninou & Dunders (1975). The variants
+  `tools/CalcTriDisps_O.m` and `tools/CalcTriStrains_O.m` are modifications by
+  Wen-Jeng Huang. **These are the routines used by the model.**
 - **Triangular dislocation routines** by Mehdi Nikkhoo (`tools/Nikkhoo/`,
-  `tools/TDstressHS.m`) — Nikkhoo & Walter (2015), Copyright © 2013 Mehdi Nikkhoo.
+  `tools/TDstressHS.m`), Copyright © 2014 Mehdi Nikkhoo, MIT license (notice in the file
+  headers) — Nikkhoo & Walter (2015). Bundled as an **optional alternative kernel only**;
+  every call site is commented out in `tools/CalcG_rake.m`, so no published result depends
+  on it.
 - **Mesh generation** based on code by Yo Fukushima (2010), adapted in
   `build_mesh/make_mesh_*.m` and `tools/make_tri_mesh.m`.
-- **Colormap data** bundled as `tools/cmap.mat`.
+- **Natural Earth** 1:10m Coastline shapefile, version 4.1.0 (`ne_10m_coastline/`) —
+  public domain, <https://www.naturalearthdata.com>.
 - **Observational data** redistributed from Lindsey et al. (2018) — see
   [Input data](#input-data).
 - **Fault geometry** derived from Slab2 (Hayes et al., 2018) and Hubbard et al. (2016).
-- **Viscoelastic Green's functions** computed with VISCO3D (Pollitz).
+- **Viscoelastic Green's functions** (`Green_function_visco/`) computed with VISCO3D
+  (Pollitz, 2014, 2025); the input files follow the method of Sherrill et al. (2026).
+  See [Citation](#citation) for the full references.
 
 Before public release, confirm and document the license, source, and version of every
 bundled third-party component.
@@ -464,10 +465,11 @@ The **viscoelastic Green's functions** were computed with the spectral-element m
 > Subduction Zone. *Journal of Geophysical Research: Solid Earth*, 130(1), e2024JB029847.
 > https://doi.org/10.1029/2024JB029847
 
-The **VISCO3D setup** follows:
+The **VISCO3D input files** were created by adopting the method used in:
 
-> Sherrill, E., Johnson, K., & Pollitz, F. F. (2026). *The Impact of Viscoelastic
-> Earthquake Cycles and Elastic Heterogeneity on Interseismic Coupling.*
+> Sherrill, E. M., Johnson, K. M., & Pollitz, F. F. (2026). Competing effects of elastic
+> heterogeneity and viscous flow on interseismic coupling at Cascadia. *Geophysical
+> Research Letters*, 53, e2026GL124108. https://doi.org/10.1029/2026GL124108
 
 The **fault geometry** is based on:
 
@@ -490,11 +492,12 @@ The **GPS data, block models, and Euler poles** come from:
 > Interseismic Coupling Along the Himalayan Megathrust. *Journal of Geophysical Research:
 > Solid Earth*, 129(9), e2024JB029819. https://doi.org/10.1029/2024JB029819
 
-The **triangular dislocation solutions** are from:
+The **triangular dislocation elements** used for the stress kernel and the elastic Green's
+functions are those of:
 
-> Nikkhoo, M., & Walter, T. R. (2015). Triangular dislocation: an analytical, artefact-free
-> solution. *Geophysical Journal International*, 201(2), 1119–1141.
-> https://doi.org/10.1093/gji/ggv035
+> Meade, B. J. (2007). Algorithms for the calculation of exact displacements, strains, and
+> stresses for triangular dislocation elements in a uniform elastic half space. *Computers
+> & Geosciences*, 33(8), 1064–1075. https://doi.org/10.1016/j.cageo.2006.12.003
 
 ---
 
