@@ -21,7 +21,7 @@ functions precomputed with VISCO3D) are included.
 - [Quick start](#quick-start)
 - [Workflow](#workflow)
 - [Model configuration](#model-configuration)
-- [Repository layout](#repository-layout)
+- [Repository Structure](#repository-structure)
 - [Input data](#input-data)
 - [Results and output formats](#results-and-output-formats)
 - [Large data files (Zenodo)](#large-data-files-zenodo)
@@ -215,7 +215,9 @@ script, so the ring parameters never move.
 
 ---
 
-## Repository layout
+## Repository Structure
+
+A typical layout (names as used in the scripts):
 
 ```
 .
@@ -439,14 +441,25 @@ bundled third-party component.
 
 ## Citation
 
-If you use this code, please cite the accompanying paper and the archived Zenodo release.
+This section records how the model was put together: the methods, codes, and datasets it
+builds on, and the reference for this implementation itself.
 
-The HMMVP author requests citation of:
+**This software.** Work that uses this code is normally credited by citing the accompanying
+paper and the archived Zenodo release:
+
+> *(accompanying paper — to be filled in on publication)*
+
+> *(Zenodo DOI — to be filled in with the archived release)*
+
+**HMMVP.** Its author asks that work using the H-matrix code cite:
 
 > A. M. Bradley (2012). *HMMVP: Software to Compute Matrix-Vector Products with an
 > H-Matrix.*
 
 ### Methods and data sources
+
+The references below are the sources of the methods, codes, and data the model is built
+from; each is credited in the section it belongs to.
 
 The **non-stationary asperity approach** and the model setup are adapted from:
 

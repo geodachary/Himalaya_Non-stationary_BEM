@@ -1,9 +1,14 @@
 clear all; close all;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% INPUT 
-addpath Green_function_visco/
-addpath visco_mesh/
+%%%%%%%%%%%%%%%%%%  INPUT %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add folder path for input data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+addpath tools
+addpath vel_field_lindsey/
 addpath hmat/
+addpath ne_10m_coastline/
 
 % Block model: use 'himalaya_visco' (Lindsey et al., 2018) or 'visco_block_I', 'visco_block_II', or 'visco_block_III' (Panda & Lindsey, 2024).
 block_id = 'himalaya_visco';
@@ -50,7 +55,8 @@ compute_disp = true;
 
 %name of file containing data
 %format of columns: lon, lat, Ve(mm/yr), Vn(mm/yr), Sige, Sign
-data_filename = 'observed_vel_subset.txt';
+
+data_filename = fullfile('vel_field_lindsey', 'observed_vel_subset.txt'); % Data from Lindsey et al. (2018)
 
 
 %path to build mesh script

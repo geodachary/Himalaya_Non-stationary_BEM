@@ -1,3 +1,4 @@
+Himalaya Non-stationary BEM
 BSD 3-Clause License
 
 Copyright (c) 2026, Durga Acharya
@@ -28,52 +29,97 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
---------------------------------------------------------------------------------
 
-THIRD-PARTY NOTICES
+================================================================================
+SCOPE
+================================================================================
 
-The license above applies to the original Himalaya Non-stationary BEM code
-authored by Durga Acharya. It does not replace the terms governing bundled
-third-party software or data, which retain their own licenses and copyrights:
+The license above covers the original Himalaya Non-stationary BEM code authored
+by Durga Acharya: the setup, forward-model, inversion, plotting, and helper
+scripts written for this project.
 
-  * hmmvp0.16/ - HMMVP: Software to Compute Hierarchical-Matrix Matrix-Vector
-    Products, version 0.16, by Andrew M. Bradley. Licensed under the Eclipse
-    Public License 1.0 (http://www.opensource.org/licenses/eclipse-1.0).
-    See hmmvp0.16/readme.txt.
+It does not extend to the third-party software and data redistributed with this
+repository, which remain under the licenses and copyrights listed below, nor to
+the model outputs and datasets that carry their own terms. Where the two differ,
+the third-party terms govern those files.
 
-  * tools/CalcTriDisps.m, tools/tridisloc3d.m - Triangular dislocation element
-    routines, Copyright (c) 2006 Brendan Meade, released under the MIT license;
-    the full notice is retained in each file header. tools/CalcTriDisps_O.m and
-    tools/CalcTriStrains_O.m are modified versions of that code by Wen-Jeng
-    Huang. These routines compute the stress kernel and the elastic Green's
-    functions used by this software. The author asks that the code and the
-    accompanying paper be cited as:
+
+================================================================================
+ATTRIBUTION AND CITATION
+================================================================================
+
+The conditions in the BSD license above are the binding requirements for
+redistribution: retain the copyright notice, the conditions, and the disclaimer.
+
+Academic citation is a separate matter. It is a scholarly convention rather than
+a condition of this license, and nothing here obliges anyone to cite a
+particular work. That said, this software is research code, and its authors and
+the authors of the components it builds on are credited in the normal way, by
+citing the accompanying paper and the archived release. The "Citation" section
+of README.md lists the references for the methods, codes, and data behind the
+model, so that anyone building on it can credit the appropriate sources.
+
+
+================================================================================
+THIRD-PARTY SOFTWARE
+================================================================================
+
+  * hmmvp0.16/
+    HMMVP: Software to Compute Hierarchical-Matrix Matrix-Vector Products,
+    version 0.16, by Andrew M. Bradley. Licensed under the Eclipse Public
+    License 1.0 (http://www.opensource.org/licenses/eclipse-1.0).
+    See hmmvp0.16/readme.txt. Its author asks that work using the code cite:
+
+        A. M. Bradley (2012). HMMVP: Software to Compute Matrix-Vector Products
+        with an H-Matrix.
+
+  * tools/CalcTriDisps.m, tools/tridisloc3d.m
+    Triangular dislocation element routines, Copyright (c) 2006 Brendan Meade,
+    released under the MIT license; the full notice is retained in each file
+    header. tools/CalcTriDisps_O.m and tools/CalcTriStrains_O.m are modified
+    versions of that code by Wen-Jeng Huang. These routines compute the stress
+    kernel and the elastic Green's functions used by this software. The author
+    asks that the code and the accompanying paper be cited as:
 
         Meade, B. J. (2007). Algorithms for the calculation of exact
         displacements, strains, and stresses for triangular dislocation elements
         in a uniform elastic half space. Computers & Geosciences, 33(8),
         1064-1075. doi:10.1016/j.cageo.2006.12.003
 
-  * tools/Nikkhoo/, tools/TDstressHS.m - Triangular dislocation routines,
-    Copyright (c) 2014 Mehdi Nikkhoo (Nikkhoo & Walter, 2015), released under the
-    MIT license; the full notice is retained in each file header. Bundled as an
-    optional alternative kernel; not used by the default code path.
+  * tools/Nikkhoo/, tools/TDstressHS.m
+    Triangular dislocation routines, Copyright (c) 2014 Mehdi Nikkhoo
+    (Nikkhoo & Walter, 2015), released under the MIT license; the full notice is
+    retained in each file header. Bundled as an optional alternative kernel;
+    every call site is commented out, so the default code path does not use it.
 
   * build_mesh/make_mesh_elastic.m, build_mesh/make_mesh_visco.m,
-    tools/make_tri_mesh.m - Triangular mesh generation based on code by
-    Yo Fukushima (2010).
+    tools/make_tri_mesh.m
+    Triangular mesh generation based on code by Yo Fukushima (2010).
 
-  * ne_10m_coastline/ - Natural Earth 1:10m Coastline shapefile, version 4.1.0.
-    Natural Earth raster and vector map data is in the public domain
+
+================================================================================
+THIRD-PARTY DATA
+================================================================================
+
+  * ne_10m_coastline/
+    Natural Earth 1:10m Coastline shapefile, version 4.1.0. Natural Earth raster
+    and vector map data is in the public domain
     (https://www.naturalearthdata.com/about/terms-of-use/).
 
-  * tools/cmap.mat - Bundled colormap data.
+  * vel_field_lindsey/
+    GPS velocities and derived baseline data from Lindsey et al. (2018).
 
-  * vel_field_lindsey/ - GPS velocity data from Lindsey et al. (2018).
+  * build_mesh/him_contours_45.txt, build_mesh/*_rake_rate.txt
+    Fault geometry derived from Slab2 (Hayes et al., 2018) and Hubbard et al.
+    (2016); convergence rakes and rates derived from the Euler poles of
+    Lindsey et al. (2018) and Panda & Lindsey (2024).
 
-  * build_mesh/him_contours_45.txt - Fault geometry derived from Slab2
-    (Hayes et al., 2018) and Hubbard et al. (2016).
+  * Green_function_visco/, visco_mesh/
+    Interseismic Green's functions computed with VISCO3D (Pollitz), following
+    the setup of Sherrill et al. (2026).
 
-  * Green_function_visco/ - Green's functions computed with VISCO3D (Pollitz).
+  * tools/cmap.mat
+    Bundled colormap data.
 
-See the "Third-party software and data" section of README.md for details.
+Full references for all of the above are given in README.md, under
+"Third-party software and data" and "Citation".
