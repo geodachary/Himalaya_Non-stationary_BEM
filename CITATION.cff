@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the archived software release."
+
+title: "Himalaya Non-stationary BEM"
+type: software
+
+authors:
+  - family-names: "Acharya"
+    given-names: "Durga"
+    affiliation: "Department of Earth and Atmospheric Sciences, Indiana University Bloomington, IN 47405-1405, USA"
+
+  - family-names: "Johnson"
+    given-names: "Kaj M."
+    affiliation: "Department of Earth and Atmospheric Sciences, Indiana University Bloomington, IN 47405-1405, USA"
+
+  - family-names: "Sherrill"
+    given-names: "Elizabeth M."
+    affiliation: "Marine Geodynamics Research Unit, GEOMAR Helmholtz Centre for Ocean Research, Wischhofstrasse 1-3, Kiel, 24148, Germany"
+
+version: 1.0.0
+date-released: 2026-08-26
+
+repository-code: "https://github.com/geodachary/Himalaya_Non-stationary_BEM"
+url: "https://github.com/geodachary/Himalaya_Non-stationary_BEM"
+
+license: BSD-3-Clause
+
+keywords:
+  - Himalaya
+  - Main Himalayan Thrust
+  - boundary element method
+  - interseismic deformation
+  - fault locking
+  - aseismic creep
+  - viscoelasticity
+  - MCMC
+  - geodesy
+  - earthquake cycle
