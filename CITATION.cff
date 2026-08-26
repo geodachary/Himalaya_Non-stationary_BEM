@@ -20,6 +20,10 @@ authors:
 version: 1.0.0
 date-released: 2026-08-26
 
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22116240"
+
 repository-code: "https://github.com/geodachary/Himalaya_Non-stationary_BEM"
 url: "https://github.com/geodachary/Himalaya_Non-stationary_BEM"
 
@@ -38,7 +42,7 @@ keywords:
   - earthquake cycle
 
 references:
-  - type: dataset
+  - type: data
     authors:
       - family-names: "Acharya"
         given-names: "Durga"

@@ -1,5 +1,7 @@
 # Himalaya Non-stationary BEM
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22116240.svg)](https://doi.org/10.5281/zenodo.22116240)
+
 Boundary-element models of interseismic locking and creep on the Main Himalayan Thrust
 (MHT), using a **non-stationary** asperity formulation in which the locked–creeping
 boundary is a free parameter and stress accumulated on a process zone ("ring") around
@@ -470,17 +472,31 @@ bundled third-party component.
 
 ## Citation
 
-This section records how the model was put together: the methods, codes, and datasets it
-builds on, and the reference for this implementation itself.
+This section records how the model was developed, including the software implementation,
+large numerical datasets, methods, codes, and observational datasets on which it builds.
 
-**This software.** Work that uses this code is normally credited by citing the accompanying
-paper and the archived Zenodo release:
+### Software
 
-> *(accompanying paper — to be filled in on publication)*
+If you use this software, please cite:
 
-> *(Zenodo DOI — to be filled in with the archived release)*
+> Acharya, D., Johnson, K. M., & Sherrill, E. M. (2026). *Himalaya Non-stationary BEM*
+> (Version v1.0.0) [Computer software]. Zenodo.
+> https://doi.org/10.5281/zenodo.22116240
 
-**HMMVP.** Its author asks that work using the H-matrix code cite:
+### Associated publication
+
+> *(Accompanying paper — citation to be added upon publication.)*
+
+### H-matrix dataset
+
+The H-matrix stress kernels required for the model are archived separately as:
+
+> Acharya, D. (2026). *H-matrix Stress Kernels for Himalaya Non-stationary Boundary Element
+> Method* [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.22114918
+
+### HMMVP
+
+Its author asks that work using the H-matrix code cite:
 
 > A. M. Bradley (2012). *HMMVP: Software to Compute Matrix-Vector Products with an
 > H-Matrix.*
@@ -554,4 +570,4 @@ third-party software or data — see
 
 ## Contact
 
-Durga Acharya — Indiana University
+Durga Acharya
