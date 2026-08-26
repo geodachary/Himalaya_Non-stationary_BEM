@@ -1,4 +1,4 @@
-# Himalaya Non-stationary BEM
+# Himalaya Non-stationary Boundary Element Method
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22116240.svg)](https://doi.org/10.5281/zenodo.22116240)
 
