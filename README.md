@@ -529,7 +529,21 @@ The **VISCO3D input files** were created by adopting the method used in:
 > heterogeneity and viscous flow on interseismic coupling at Cascadia. *Geophysical
 > Research Letters*, 53, e2026GL124108. https://doi.org/10.1029/2026GL124108
 
-The **fault geometry** is based on:
+The **fault geometry** distributed here (`build_mesh/him_contours_45.txt`) is a new
+composite surface built for this study. It combines the two models below — modifying Slab2
+to reproduce the ramp–flat structure of the MHT reported by Hubbard et al. (2016) in the
+Nepal section, merging the two models elsewhere, and extrapolating the interface from the
+30 km limit of Hubbard et al. (2016) down to 45 km (and to 75 km for the viscoelastic
+setup) using the dip measured between 25 and 30 km. See
+[`build_mesh/`](#build_mesh) for the full construction.
+
+If you use this fault geometry, please cite the software release:
+
+> Acharya, D., Johnson, K. M., & Sherrill, E. M. (2026). *Himalaya Non-stationary BEM*
+> (Version v1.0.0) [Computer software]. Zenodo.
+> https://doi.org/10.5281/zenodo.22116240
+
+together with the source models it is derived from:
 
 > Hayes, G. P., Moore, G. L., Portner, D. E., Hearne, M., Flamme, H., Furtney, M., &
 > Smoczyk, G. M. (2018). Slab2, a comprehensive subduction zone geometry model. *Science*,
