@@ -118,14 +118,14 @@ if ~invert_vel
     figure; hold on;  
     axis equal
     for k=1:size(BaseEnds,1)
-        cline([BaseEnds(k,1) BaseEnds(k,3)],[BaseEnds(k,2) BaseEnds(k,4)],[Vbase(k)/L(k) Vbase(k)/L(k)])
+        cline([BaseEnds(k,1) BaseEnds(k,3)],[BaseEnds(k,2) BaseEnds(k,4)],[Vbase(k) Vbase(k)])
     end
-    title('Baseline elongation rates')
+    title('Baseline Baseline length changes rates')
     bbox = [73.04 26.6; 95.18 38]; plot_coast_xy(bbox,origin,'k')
     load cmap
     colormap(cmap)
     colorbar
-    caxis([-max(abs(Vbase./L)) max(abs(Vbase./L))])
+    caxis([-max(abs(Vbase)) max(abs(Vbase))])
 end
 
 

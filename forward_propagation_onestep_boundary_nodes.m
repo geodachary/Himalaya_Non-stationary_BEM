@@ -250,7 +250,6 @@ if ~invert_vel
     colorbar
     caxis([-max(abs(Vbase)) max(abs(Vbase))])
 
-
 end
 
 %% plot velocities

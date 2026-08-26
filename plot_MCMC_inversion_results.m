@@ -15,11 +15,12 @@ close all;
 % folder_name = fullfile('MCMC_results', results_folder, results_name);
 
 
-
-folder_name = 'test_outputs_noringtau';
+% if the results were save outside of MCMC_results
+folder_name = 'test_outputs';
+% load(folder_name)
 
 %discard burn-in samples
-discard = 10;
+discard = 4;
 
 eval(['load ./' folder_name '/M_locked_depths_U.txt'])
 eval(['load ./' folder_name '/M_locked_depths_L.txt'])

@@ -61,6 +61,7 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 venv/
+mean_data_for_publication_nouse.ipynb
 
 #-------------------------------------------------------------------------------
 # OS clutter

@@ -9,6 +9,7 @@ addpath tools
 addpath vel_field_lindsey/
 addpath hmat/
 addpath ne_10m_coastline/
+addpath Green_function_visco/
 
 % Block model: use 'himalaya_visco' (Lindsey et al., 2018) or 'visco_block_I', 'visco_block_II', or 'visco_block_III' (Panda & Lindsey, 2024).
 block_id = 'himalaya_visco';
@@ -77,7 +78,7 @@ elseif any(strcmpi(block_id, {'visco_block_II'}))
 elseif any(strcmpi(block_id, {'visco_block_III'}))
     hsub = 'hmat_III';
 elseif any(strcmpi(block_id, {'himalaya_visco'}))
-    hsub = 'hmat_ES';
+    hsub = 'hmat_lindsey';
 else
     error('Unknown block name: %s', block_id);
 end
@@ -152,15 +153,16 @@ if ~invert_vel
     figure; hold on;  
     axis equal
     for k=1:size(BaseEnds,1)
-        cline([BaseEnds(k,1) BaseEnds(k,3)],[BaseEnds(k,2) BaseEnds(k,4)],[Vbase(k)/L(k) Vbase(k)/L(k)])
+        cline([BaseEnds(k,1) BaseEnds(k,3)],[BaseEnds(k,2) BaseEnds(k,4)],[Vbase(k) Vbase(k)])
     end
-    title('Baseline elongation rates')
+    title('Baseline Baseline length changes rates')
     bbox = [73.04 26.6; 95.18 38]; plot_coast_xy(bbox,origin,'k')
     load cmap
     colormap(cmap)
     colorbar
-    caxis([-max(abs(Vbase./L)) max(abs(Vbase./L))])
+    caxis([-max(abs(Vbase)) max(abs(Vbase))])
 end
+
 
 
 %% compute displacement GFs or load file

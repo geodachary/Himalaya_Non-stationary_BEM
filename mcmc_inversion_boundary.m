@@ -33,7 +33,7 @@ stepsize_ring_tau = 0.5e6*ones(num_Dpts,1);
 %setting to true appends existing files
 continuing = false;
 
-%time step for propgation 
+%time step for propagation 
 dT = 10;
 
 D = 3;  %process-zone width (km)
@@ -50,7 +50,10 @@ longterm_velocity_file = 'Himalaya_block_velocities.txt';
 
 
 % folder for saving output files
-folder_name = fullfile('MCMC_results', 'test_outputs_noringtau');
+% folder_name = fullfile('MCMC_results', 'test_outputs');
+
+% If the results are to be saved outside of MCMC_results
+folder_name = 'test_outputs';
 
 % Create the folder if it does not exist
 if ~exist(folder_name, 'dir')
