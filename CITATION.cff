@@ -36,3 +36,15 @@ keywords:
   - MCMC
   - geodesy
   - earthquake cycle
+
+references:
+  - type: dataset
+    authors:
+      - family-names: "Acharya"
+        given-names: "Durga"
+    title: "H-matrix Stress Kernels for Himalaya Non-stationary Boundary Element Method"
+    year: 2026
+    publisher:
+      name: "Zenodo"
+    doi: "10.5281/zenodo.22114918"
+    url: "https://doi.org/10.5281/zenodo.22114918"
