@@ -377,32 +377,61 @@ Element files have 9,474 rows (one per triangular patch); baseline files have 58
 
 ## Large data files (Zenodo)
 
-The `hmat/` directory holds four H-matrix files of ~229 MB each (~1 GB total). GitHub
-rejects regular git objects larger than 100 MB and is a poor host for data of this size,
-so **`hmat/` is excluded via `.gitignore` and is distributed instead with the associated
-Zenodo record.** Download it and place it at the repository root, preserving the
-`hmat/hmat_lindsey`, `hmat/hmat_I`, `hmat/hmat_II`, `hmat/hmat_III` structure, before
-running any model.
+The `hmat/` directory contains four H-matrix stress-interaction kernels used by the elastic and viscoelastic boundary-element calculations. Each file is approximately 229 MB (~1 GB total). Because GitHub rejects regular Git objects larger than 100 MB and is not well suited for distributing files of this size, **`hmat/` is excluded from the repository via `.gitignore` and archived separately on Zenodo.**
 
-SHA-256 checksums:
+The archived dataset is:
 
+> Acharya, D. (2026). *H-matrix Stress Kernels for Himalaya Non-stationary Boundary Element Method* [Dataset]. Zenodo.
+> https://doi.org/10.5281/zenodo.22114918
+
+Download the archived H-matrix dataset, extract it, and place the `hmat/` directory at the repository root before running the models. Preserve the following directory structure:
+
+```text
+hmat/
+├── hmat_lindsey/
+│   └── Hmat_ne9474hmat1rerr-3.00.dat
+├── hmat_I/
+│   └── Hmat_ne9474hmat1rerr-3.00.dat
+├── hmat_II/
+│   └── Hmat_ne9474hmat1rerr-3.00.dat
+└── hmat_III/
+    └── Hmat_ne9474hmat1rerr-3.00.dat
 ```
-<to be filled in with the Zenodo release>
+
+### SHA-256 checksums
+
+The integrity of the downloaded H-matrix files can be verified using the following SHA-256 checksums:
+
+| File                                              | SHA-256                                                            |
+| ------------------------------------------------- | ------------------------------------------------------------------ |
+| `hmat/hmat_lindsey/Hmat_ne9474hmat1rerr-3.00.dat` | `b4592f23e128faa007a1512ebaef556b547de920ebe14dab167c0428a2e60641` |
+| `hmat/hmat_I/Hmat_ne9474hmat1rerr-3.00.dat`       | `05da266e3e06adae9879374d67518922ea74e2aa59de248d9e3e36823b2ba5a0` |
+| `hmat/hmat_II/Hmat_ne9474hmat1rerr-3.00.dat`      | `2be73ad932c3f52f3ba89836f8a324591aa90c53e821eff23b22dde7c976e7ac` |
+| `hmat/hmat_III/Hmat_ne9474hmat1rerr-3.00.dat`     | `ebd898d8560e707fb7f76becbca13baef978c9fdb1e8d407048b7641344833bc` |
+
+The compressed archive deposited on Zenodo can additionally be verified using:
+
+```text
+Himalaya_Non-stationary_BEM_hmat_v1.0.0.tar.gz
+SHA-256: a6e548b46e301e50ee8de7f9ec7ef3dac4c7cb74e959a86d6c92c8dbbdeae151
 ```
 
-Alternatively, edit `setup_elastic.m` or `setup_visco.m` and set:
+Alternatively, the required H-matrix can be generated locally. Edit `setup_elastic.m` or `setup_visco.m` and set:
 
 ```matlab
 compute_hmat = true;
 ```
 
-The H-matrix for the selected `block_id` is then generated if it is missing. **This
-calculation is far more expensive than the model runs that follow it**, so prefer the
-archived files where possible. Set `compute_hmat = false` again once the file exists.
+If the H-matrix corresponding to the selected `block_id` is missing, the setup routine will generate it automatically. **This calculation is substantially more computationally expensive than the model calculations that follow**, so using the archived Zenodo files is recommended whenever possible.
 
-The viscoelastic Green's functions in `Green_function_visco/` (~46 MB each, ~730 MB total)
-are individually under GitHub's hard limit but still large; consider archiving them on
-Zenodo as well rather than committing them.
+After the required H-matrix has been generated, set:
+
+```matlab
+compute_hmat = false;
+```
+
+again for subsequent model runs.
+
 
 ---
 
