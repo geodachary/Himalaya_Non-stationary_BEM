@@ -75,3 +75,9 @@ mean_data_for_publication_nouse.ipynb
 ehthumbs.db
 Thumbs.db
 desktop.ini
+
+
+#-------------------------------------------------------------------------------
+# Other large files distributed via Zenodo, not git
+#-------------------------------------------------------------------------------
+Himalaya_Non-stationary_BEM_hmat_v1.0.0.tar.gz
