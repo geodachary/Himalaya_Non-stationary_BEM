@@ -20,7 +20,7 @@ folder_name = 'test_outputs';
 % load(folder_name)
 
 %discard burn-in samples
-discard = 4;
+discard = 800;
 
 eval(['load ./' folder_name '/M_locked_depths_U.txt'])
 eval(['load ./' folder_name '/M_locked_depths_L.txt'])
@@ -144,10 +144,28 @@ end
 
 
 %compute stressing rates
+bslip = rates(:).' - creep_rates;              % [n_real x n_patch], mm/yr
 for k = 1:size(M_locked_depths_U, 1)
     scale = mu*10^-3;
-    stressing_rates(:,k) = hm_mvp('mvp',gamb.hmat.id,creep_rates(k,:)');
+    stressing_rates(:,k) = -hm_mvp('mvp',gamb.hmat.id,bslip(k,:)');
 end
+
+
+% Plot code for stressing rates
+figure
+h=trisurf(el,nd(:,1),nd(:,2),nd(:,3),mean(stressing_rates'),'edgecolor','none'); colorbar;  daspect([1,1,1])
+colormap(jet)
+colorbar
+axis equal
+axis tight      
+set(gca,'fontsize',15)
+title('Stressing rates')
+view(2)
+hold on
+bbox = [73.04 26.6; 95.18 38]; plot_coast_xy(bbox,origin,'k')
+ylim([-200 900])
+
+
 
 %specify start and end points of slip rate profiles across interface
 %each row is a profile:  start x, start y, end x, end y

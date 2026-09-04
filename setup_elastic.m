@@ -2,7 +2,7 @@
 %% INPUT 
 
 % Block model: use 'lindsey_2018' (Lindsey et al., 2018) or 'Block_I', 'Block_II', or 'Block_III' (Panda & Lindsey, 2024).
-block_id = 'Block_III';
+block_id = 'lindsey_2018';
 
 %invert velocities or baselines?
 %true for velocities, false for baselines

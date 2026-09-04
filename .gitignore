@@ -81,3 +81,16 @@ desktop.ini
 # Other large files distributed via Zenodo, not git
 #-------------------------------------------------------------------------------
 Himalaya_Non-stationary_BEM_hmat_v1.0.0.tar.gz
+
+
+
+#-------------------------------------------------------------------------------
+# Test outputs
+#-------------------------------------------------------------------------------
+
+# Keep the test_outputs directory in the repository, but ignore everything
+# generated inside it.
+# test_outputs/*
+# !test_outputs/.gitkeep
+
+test_outputs/test_outputs/
